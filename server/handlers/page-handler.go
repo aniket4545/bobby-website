@@ -1,13 +1,14 @@
 package handlers
 
 import (
+	config "bobby-website/server/configurations"
 	"html/template"
 	"net/http"
 )
 
 //InitialRequest this is the first empty handler
 func InitialRequest(wr http.ResponseWriter, req *http.Request) {
-	tmpl, err := template.ParseFiles("client/sample.html")
+	tmpl, err := template.ParseFiles(config.HTMLFILEPATH + "/landing.html")
 	if err != nil {
 		panic(err)
 	}
