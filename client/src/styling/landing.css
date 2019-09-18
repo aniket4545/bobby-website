@@ -6,19 +6,6 @@ ol, ul {
 
 /* end common css */
 
-.grid {
-	margin-left: auto;
-	margin-right: auto;
-	width: 370px;
-	clear: both
-}
-
-.grid:after {
-	content: '';
-	display: table;
-	clear: both
-}
-
 .site-container {
 	position: relative;
 }
@@ -368,12 +355,19 @@ header nav, header nav .container {
 	background-color: rgba(0, 0, 0, 0.6);
 }
 
+.contact-us-title {
+	font-size: 5vw;
+	text-align: center;
+}
+
+.form-grid {
+	width: 50%;
+	margin: auto;
+}
+
 /* media queries */
 
 @media (min-width: 768px) {
-	.grid {
-		width: 750px
-	}
 	.splash-main .tagline {
 		width: 440px;
 	}
@@ -418,9 +412,6 @@ header nav, header nav .container {
 }
 
 @media (min-width: 1148px) {
-	.grid {
-		width: 1130px
-	}
 	.web-information {
 		float: right;
 		display: flex;
@@ -457,3 +448,36 @@ header nav, header nav .container {
 }
 
 /* end media queries */
+
+/* grid css */
+
+.grid {
+	margin-left: auto;
+	margin-right: auto;
+	width: 370px;
+	clear: both
+}
+
+.grid:after {
+	content: '';
+	display: table;
+	clear: both
+}
+
+@media (min-width: 768px) {
+	.grid {
+		width: 750px;
+	}
+}
+
+@media (min-width: 1148px) {
+	.grid {
+		width: 1130px;
+	}
+}
+
+@media (min-width: 1528px) {
+	.grid {
+		width: 1510px;
+	}
+}
