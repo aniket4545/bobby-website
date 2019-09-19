@@ -14,3 +14,8 @@ func InitialRequest(wr http.ResponseWriter, req *http.Request) {
 	}
 	tmpl.Execute(wr, nil)
 }
+
+//Login will be on login of admin
+func Login(wr *http.ResponseWriter, req *http.Request) {
+
+}
