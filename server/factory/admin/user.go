@@ -2,7 +2,6 @@ package admin
 
 import (
 	"math/rand"
-	"strconv"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -28,9 +27,8 @@ func (u *admin) validatePassword(password []byte) error {
 	return bcrypt.CompareHashAndPassword([]byte(u.password), password)
 }
 
-func (u *admin) generateAccessToken() string {
+func (u *admin) generateAccessToken() {
 	u.accessToken = getAccessToken(30)
-	return strconv.Itoa(rand.Intn(10000000))
 }
 
 func getAccessToken(n int) string {
