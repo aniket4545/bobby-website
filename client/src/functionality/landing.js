@@ -13,3 +13,12 @@ function showing() {
 }
 
 showing();
+
+const loginPageElement = document.querySelector('.js-login-form');
+document.querySelector('.js-login-page').addEventListener('click', () => {
+  loginPageElement.style.display = 'block';
+});
+
+document.querySelector('.js-cancel-login').addEventListener('click', () => {
+  loginPageElement.style.display = 'none';
+});

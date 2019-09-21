@@ -1,5 +1,18 @@
 /* common css */
 
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: #202020;
+	color: #ecf4f4;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
 ol, ul {
 	list-style-type: none;
 }
@@ -16,68 +29,17 @@ ol, ul {
 }
 
 header {
-	position: absolute;
+	position: fixed;
 	height: 50px;
 	color: #ccc;
 	top: 0;
 	width: 100%;
-	z-index: 10000;
+	z-index: 1000;
+	box-sizing: border-box;
 }
 
-header nav, header nav .container {
-	height: 100%;
-	padding: 0 !important;
-}
-
-.search-container {
-	display: flex;
+.container .navbar-brand {
 	flex: 1;
-	height: 100%;
-}
-
-.search-container::before {
-	content: '';
-	position: absolute;
-	border-left: 1px solid rgb(158, 158, 158);
-	top: 0;
-	bottom: 0;
-}
-
-.search-form__container {
-	position: relative;
-	margin: 0;
-	height: 100%;
-}
-
-.search-form {
-	color: #ccc;
-	height: 100%;
-}
-
-.search-form__input::placeholder {
-	color: #ccc;
-}
-
-.header-search-icon {
-	position: absolute;
-	top: 50%;
-	left: 16px;
-	transform: translateY(-50%);
-}
-
-.search-form__input {
-	border: none;
-	color: #ccc;
-	background-color: transparent;
-	height: 50px;
-	padding: 12px 16px;
-	padding-left: 38px;
-	outline: none;
-	margin-left: 1px;
-}
-
-.search-form__input:focus {
-	background-color: rgb(119, 119, 119);
 }
 
 .header-links {
@@ -86,6 +48,7 @@ header nav, header nav .container {
 	height: 100%;
 	margin: 0;
 	margin-left: 21px;
+	flex-direction: row;
 }
 
 .header-link--item-label {
@@ -263,9 +226,10 @@ header nav, header nav .container {
 	color: #666;
 }
 
-.programmed-films, .splash-film-grid {
-	height: 388px;
-	overflow: hidden;
+.splash-film-grid {
+	display: inline-block;
+	width: 100%;
+	margin-top: 90px;
 }
 
 .film-grid {
@@ -278,7 +242,6 @@ header nav, header nav .container {
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
-	margin-top: 90px;
 	position: relative;
 	cursor: pointer;
 }
@@ -294,8 +257,7 @@ header nav, header nav .container {
 }
 
 .film-tile:nth-child(3n) {
-	float: right;
-	margin-right: 0
+	margin-right: 0;
 }
 
 .film-thumb {
@@ -361,8 +323,18 @@ header nav, header nav .container {
 }
 
 .form-grid {
-	width: 50%;
+	width: 100%;
 	margin: auto;
+}
+
+@media (min-width: 768px) {
+	.form-grid {
+		width: 50%;
+	}
+}
+
+.contact-us {
+	padding-top: 4vw;
 }
 
 /* media queries */
@@ -479,5 +451,88 @@ header nav, header nav .container {
 @media (min-width: 1528px) {
 	.grid {
 		width: 1510px;
+	}
+}
+
+/* login form */
+
+.padding-16px {
+	padding: 16px;
+}
+
+.action-container {
+	background-color: #f1f1f1
+}
+
+.modal {
+	background-color: rgba(0, 0, 0, 0.6);
+	color: #212529;
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 10% auto;
+	width: 40%;
+}
+
+.input-text-box {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 0 0 12px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+.btn-login {
+	margin-bottom: 12px;
+}
+
+.password-link {
+	float: right;
+	padding-top: 6px;
+}
+
+/* Add Zoom Animation */
+
+.animate {
+	-webkit-animation: animateZoom 0.6s;
+	animation: animateZoom 0.6s;
+}
+
+@-webkit-keyframes animateZoom {
+	from {
+		-webkit-transform: scale(0);
+	}
+	to {
+		-webkit-transform: scale(1);
+	}
+}
+
+@keyframes animateZoom {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.header-link--item-label i {
+	display: none;
+}
+
+@media (max-width: 500px) {
+	.header-link--item-label i {
+		display: inline-block;
+	}
+	.header-link--item-label span {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.film-tile:nth-child(2n) {
+		margin-right: 0;
 	}
 }
