@@ -21,34 +21,38 @@
               src="https://lh3.googleusercontent.com/-ZAS0BBE8Sm0/WaFOdATxW9I/AAAAAAAAAf4/8FfuKoWw6n0cvynAv7Fv2sdYESliQEm4wCL0BGAYYCw/h18/2017-08-26.png"
               alt="L A N T E R N">
           </a>
-          <div class="search-container">
-            <form action="/search" class="search-form__container">
-              <div class="search-form">
-                <i class="fa fa-search header-search-icon" aria-hidden="true"></i>
-                <input type="search" class="search-form__input" placeholder="Search..." />
-              </div>
-            </form>
-          </div>
           <ul class="navbar-nav header-links">
             <li class="nav-item header-link--item">
-              <a class="nav-link header-link--item-label">NOW SHOWING</a>
+              <a href="#home" class="nav-link header-link--item-label">
+                <span>HOME</span>
+                <i class="fa fa-home cursor-pointer" title="Home" aria-hidden="true"></i>
+              </a>
             </li>
             <li class="nav-item header-link--item">
-              <a class="nav-link header-link--item-label">RENTALS</a>
+              <a href="#about" class="nav-link header-link--item-label">
+                <span>ABOUT</span>
+                <i class="fa fa-info-circle cursor-pointer" title="About" aria-hidden="true"></i>
+              </a>
             </li>
             <li class="nav-item header-link--item">
-              <a class="nav-link header-link--item-label">FEED</a>
+              <a href="#work" class="nav-link header-link--item-label">
+                <span>WORK</span>
+                <i class="fa fa-briefcase cursor-pointer" title="Work" aria-hidden="true"></i>
+              </a>
             </li>
             <li class="header-link--item">
-              <a class="nav-link header-link--item-label">NOOTBOOK</a>
+              <a href="#contact" class="nav-link header-link--item-label">
+                <span>CONTACT</span>
+                <i class="fa fa-envelope-o cursor-pointer" title="Contact" aria-hidden="true"></i>
+              </a>
             </li>
           </ul>
-          <i class="fa fa-bars" aria-hidden="true"></i>
+          <i class="fa fa-bars cursor-pointer js-login-page" title="Login" aria-hidden="true"></i>
         </div>
       </nav>
     </header>
 
-    <div class="main-heading-section">
+    <div class="main-heading-section" id="home">
       <div class="heading-image-container">
         <div class="splash-main-bgs">
           <div class="splash-panel splash-main-bg-a showing"
@@ -75,7 +79,7 @@
       </div>
     </div>
 
-    <div class="just-info-section">
+    <div class="just-info-section" id="about">
       <div class="just-info-image" style="background-image: url('https://assets.mubi.com/splash/dog_tooth.jpg')">
         <h2 class="just-info__heading">
           Cult, classic, independent and award-winning films from around the world
@@ -83,7 +87,7 @@
       </div>
     </div>
 
-    <div class="now-showing">
+    <div class="now-showing" id="work">
       <div class="now-showing-upper grid">
         <h2 class="now-showing-upper__heading splash-left">
           Now showing on MUBI
@@ -132,7 +136,7 @@
       </div>
     </div>
 
-    <div class="contact-us grid">
+    <div class="contact-us grid" id="contact">
       <p class="contact-us-title">Contact Us</p>
       <form class="form-grid">
         <input type="hidden" data-form-email="true">
@@ -149,6 +153,28 @@
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-lg btn-success">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal js-login-form" id="login-form">
+      <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="container padding-16px">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" class="input-text-box" placeholder="Enter Username" name="uname" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" class="input-text-box" placeholder="Enter Password" name="psw" required>
+
+          <button type="submit" class="btn btn-md btn-success btn-block btn-login">Login</button>
+          <label class="cursor-pointer">
+            <input type="checkbox" class="cursor-pointer" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+
+        <div class="action-container padding-16px">
+          <button type="button" class="btn btn-md btn-danger js-cancel-login">Cancel</button>
+          <span class="password-link">Forgot <a href="#">password?</a></span>
         </div>
       </form>
     </div>
