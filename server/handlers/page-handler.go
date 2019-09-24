@@ -11,8 +11,8 @@ import (
 //if access token is been cleared or been destroyed by closing the browser an call should be made
 //in which we will set the access token in cookie an this can be handled using middle ware in routing
 
-//InitialRequest this is the first empty handler
-func InitialRequest(wr http.ResponseWriter, req *http.Request) {
+//Landing this is the first empty handler
+func Landing(wr http.ResponseWriter, req *http.Request) {
 	tmpl, err := template.ParseFiles(config.HTMLFILEPATH + "/landing.html")
 	if err != nil {
 		panic(err)
@@ -59,6 +59,7 @@ func CheckSession(handler http.Handler) http.Handler {
 				http.SetCookie(wr, cookie)
 			} else if fact.IsValidToken(cookie.Value) {
 				handler.ServeHTTP(wr, req)
+				return
 			}
 			//will show us invalid token message
 			wr.WriteHeader(401)

@@ -25,7 +25,7 @@ func routers() *mux.Router {
 	//these dont require the session check
 	router.HandleFunc("/signin", h.SignIn)
 	router.HandleFunc("/signout", h.SignOut)
-	router.HandleFunc("/", h.InitialRequest)
+	router.HandleFunc("/", h.Landing)
 	router.HandleFunc("/{file}", h.HandleFile)
 
 	return router
