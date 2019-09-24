@@ -67,3 +67,8 @@ func RefreshToken() *string {
 	ADMIN.generateAccessToken()
 	return &ADMIN.accessToken
 }
+
+//IsValidToken will check if the passed token is valid or not
+func IsValidToken(token string) bool {
+	return ADMIN.accessToken == token
+}

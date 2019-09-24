@@ -57,8 +57,11 @@ func CheckSession(handler http.Handler) http.Handler {
 			if cookie == nil || err != nil || cookie.Value == "" {
 				cookie = newCookie("access_token", *fact.RefreshToken())
 				http.SetCookie(wr, cookie)
+			} else if fact.IsValidToken(cookie.Value) {
+				handler.ServeHTTP(wr, req)
 			}
-			handler.ServeHTTP(wr, req)
+			//will show us invalid token message
+			wr.WriteHeader(401)
 		}
 	})
 }
