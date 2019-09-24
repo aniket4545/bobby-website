@@ -27,8 +27,6 @@ func init() {
 		fmt.Println("creating admin")
 		ADMIN = create()
 	}
-	//access token expires once server is reboot
-	ADMIN.generateAccessToken()
 	fmt.Println("admin created:::::", ADMIN)
 }
 

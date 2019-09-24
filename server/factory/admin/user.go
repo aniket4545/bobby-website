@@ -1,10 +1,13 @@
 package admin
 
 import (
+	"errors"
 	"math/rand"
 
 	"golang.org/x/crypto/bcrypt"
 )
+
+var err = errors.New("Invalid input. Please enter valid email and password")
 
 type admin struct {
 	name        string
@@ -23,10 +26,15 @@ func hashAndSalt(password []byte) string {
 	return string(encrypted)
 }
 
-func (u *admin) validatePassword(password []byte) error {
-	return bcrypt.CompareHashAndPassword([]byte(u.password), password)
+//isValidPassword will validate password for user
+func (u *admin) isValidPassword(password []byte) bool {
+	if err := bcrypt.CompareHashAndPassword([]byte(u.password), password); err != nil {
+		return false
+	}
+	return true
 }
 
+//GenerateAccessToken will generate access token for user
 func (u *admin) generateAccessToken() {
 	u.accessToken = getAccessToken(30)
 }
@@ -37,4 +45,19 @@ func getAccessToken(n int) string {
 		b[i] = letterRunes[rand.Intn(len(letterRunes))]
 	}
 	return string(b)
+}
+
+//ValidateRequest will validate request and will return token
+func ValidateRequest(email string, password string) (*string, error) {
+	if email != ADMIN.email || !ADMIN.isValidPassword([]byte(password)) {
+		return nil, err
+	}
+	ADMIN.generateAccessToken()
+	token := ADMIN.accessToken
+	return &token, nil
+}
+
+//DestroyAccessToken will be called on signout call
+func (u *admin) DestroyAccessToken() {
+	u.accessToken = ""
 }
