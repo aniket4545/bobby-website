@@ -11,4 +11,6 @@ const (
 	JSFILEPATH string = "client/src/functionality"
 	//HTMLFILEPATH is the path for css files
 	HTMLFILEPATH string = "client/src/templates"
+	//PATH is for DB path
+	PATH string = "server/user/"
 )
