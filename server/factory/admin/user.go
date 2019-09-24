@@ -61,3 +61,9 @@ func ValidateRequest(email string, password string) (*string, error) {
 func (u *admin) DestroyAccessToken() {
 	u.accessToken = ""
 }
+
+//RefreshToken will regenerate the token and will send it to client
+func RefreshToken() *string {
+	ADMIN.generateAccessToken()
+	return &ADMIN.accessToken
+}
