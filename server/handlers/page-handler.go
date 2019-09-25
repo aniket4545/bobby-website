@@ -27,9 +27,8 @@ func SignIn(wr http.ResponseWriter, req *http.Request) {
 	if req.Method == http.MethodPost {
 		req.ParseForm()
 		if token, err := fact.ValidateRequest(req.Form.Get("email"), req.Form.Get("password")); err == nil {
-			//set the token in cookie
-			cookie := newCookie("access_token", *token)
-			http.SetCookie(wr, cookie)
+			//set the token in header to client
+			wr.Write([]byte(*token))
 			wr.WriteHeader(200)
 		} else {
 			wr.WriteHeader(401)
@@ -41,9 +40,6 @@ func SignIn(wr http.ResponseWriter, req *http.Request) {
 func SignOut(wr http.ResponseWriter, req *http.Request) {
 	if req.Method == http.MethodPost {
 		fact.ADMIN.DestroyAccessToken()
-		//set the token in cookie as empty
-		cookie := newCookie("access_token", "")
-		http.SetCookie(wr, cookie)
 		wr.WriteHeader(200)
 	}
 }
@@ -53,14 +49,9 @@ func SignOut(wr http.ResponseWriter, req *http.Request) {
 func CheckSession(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(wr http.ResponseWriter, req *http.Request) {
 		if req.Method == http.MethodPost {
-			cookie, err := req.Cookie("access_token")
-			if cookie == nil || err != nil || cookie.Value == "" {
-				cookie = newCookie("access_token", *fact.RefreshToken())
-				http.SetCookie(wr, cookie)
-			} else if fact.IsValidToken(cookie.Value) {
-				handler.ServeHTTP(wr, req)
-				return
-			}
+			//check access token which would be fetched from authorization header
+			wr.Write([]byte(*fact.RefreshToken()))
+			handler.ServeHTTP(wr, req)
 			//will show us invalid token message
 			wr.WriteHeader(401)
 		}
