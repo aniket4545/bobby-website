@@ -2,21 +2,23 @@ package admin
 
 import (
 	"errors"
-	"math/rand"
 
+	jwt "github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 )
 
 var err = errors.New("Invalid input. Please enter valid email and password")
 
-type admin struct {
-	name        string
-	email       string
-	password    string
-	accessToken string
+//Admin is the system user who has complete control on the website
+//he can then edit all the contents on the websites
+type Admin struct {
+	Name        string
+	Email       string
+	Password    string
+	AccessToken string
 }
 
-var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+var privateKey = []byte("abcdefghijxyzABCDEopqrFGHIJKLklmnstuvwMN345678OPQRSTUVWXYZ1290")
 
 func hashAndSalt(password []byte) string {
 	encrypted, err := bcrypt.GenerateFromPassword(password, bcrypt.DefaultCost)
@@ -27,48 +29,51 @@ func hashAndSalt(password []byte) string {
 }
 
 //isValidPassword will validate password for user
-func (u *admin) isValidPassword(password []byte) bool {
-	if err := bcrypt.CompareHashAndPassword([]byte(u.password), password); err != nil {
+func (u *Admin) isValidPassword(password []byte) bool {
+	if err := bcrypt.CompareHashAndPassword([]byte(u.Password), password); err != nil {
 		return false
 	}
 	return true
 }
 
 //GenerateAccessToken will generate access token for user
-func (u *admin) generateAccessToken() {
-	u.accessToken = getAccessToken(30)
-}
-
-func getAccessToken(n int) string {
-	b := make([]rune, n)
-	for i := range b {
-		b[i] = letterRunes[rand.Intn(len(letterRunes))]
+func (u *Admin) generateAccessToken() {
+	token := jwt.New(jwt.SigningMethodHS256)
+	var err error
+	u.AccessToken, err = token.SignedString(privateKey)
+	if err != nil {
+		panic(err)
 	}
-	return string(b)
 }
 
 //ValidateRequest will validate request and will return token
 func ValidateRequest(email string, password string) (*string, error) {
-	if email != ADMIN.email || !ADMIN.isValidPassword([]byte(password)) {
+	if email != ADMIN.Email || !ADMIN.isValidPassword([]byte(password)) {
 		return nil, err
 	}
 	ADMIN.generateAccessToken()
-	token := ADMIN.accessToken
+	token := ADMIN.AccessToken
 	return &token, nil
 }
 
 //DestroyAccessToken will be called on signout call
-func (u *admin) DestroyAccessToken() {
-	u.accessToken = ""
+func (u *Admin) DestroyAccessToken() {
+	u.AccessToken = ""
 }
 
 //RefreshToken will regenerate the token and will send it to client
 func RefreshToken() *string {
 	ADMIN.generateAccessToken()
-	return &ADMIN.accessToken
+	return &ADMIN.AccessToken
 }
 
 //IsValidToken will check if the passed token is valid or not
 func IsValidToken(token string) bool {
-	return ADMIN.accessToken == token
+	parsedToken, _ := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
+		return privateKey, nil
+	})
+	if parsedToken.Valid {
+		return true
+	}
+	return false
 }
