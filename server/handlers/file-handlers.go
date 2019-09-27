@@ -52,6 +52,9 @@ func getContentType(file string) (contentType, path string) {
 		contentType = "image/jpeg"
 	case strings.HasSuffix(file, ".svg"):
 		contentType = "image/svg"
+	case strings.HasSuffix(file, ".ico"):
+		path = config.ASSETPATH + file
+		contentType = "image/ico"
 	}
 	return
 }

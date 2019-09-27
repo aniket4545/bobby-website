@@ -13,4 +13,6 @@ const (
 	HTMLFILEPATH string = "client/src/templates"
 	//PATH is for DB path
 	PATH string = "server/user/"
+	//ASSETPATH will have all image asset path
+	ASSETPATH string = "client/src/assets"
 )
