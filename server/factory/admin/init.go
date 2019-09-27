@@ -4,7 +4,7 @@ import (
 	config "bobby-website/server/configurations"
 	"bytes"
 	"encoding/gob"
-	"fmt"
+	"os"
 
 	"go.etcd.io/bbolt"
 )
@@ -13,46 +13,52 @@ import (
 
 var (
 	path   = config.PATH + "/admin.db"
-	bucket = "admin"
+	bucket = "root"
 	key    = "user"
 )
 
 //first load user if we get empty user then create user write it in DB
 
 //ADMIN is the user object
-var ADMIN *admin
+var ADMIN *Admin
 
 func init() {
-	if ADMIN = load(); ADMIN == nil {
-		fmt.Println("creating admin")
+	load()
+	if ADMIN == nil {
+		os.MkdirAll(config.PATH, 0777)
 		ADMIN = create()
 	}
-	fmt.Println("admin created:::::", ADMIN)
 }
 
-func load() *admin {
-	var adminUser = new(admin)
+func load() {
+	var temp = new(Admin)
 	if db, _ := bbolt.Open(path, 0660, nil); db != nil {
+		defer db.Close()
 		db.View(func(tx *bbolt.Tx) error {
 			adminBucket := tx.Bucket([]byte(bucket))
 			if user := adminBucket.Get([]byte(key)); user != nil {
 				dec := gob.NewDecoder(bytes.NewReader(user))
-				err := dec.Decode(&adminUser)
-				return err
+				dec.Decode(temp)
+				ADMIN = temp
 			}
 			return nil
 		})
 	}
-	return adminUser
 }
 
-func create() *admin {
-	var temp = new(admin)
+func create() *Admin {
+	var temp = new(Admin)
 	if db, _ := bbolt.Open(path, 0660, nil); db != nil {
+		defer db.Close()
 		db.Update(func(tx *bbolt.Tx) error {
 			adminBucket, _ := tx.CreateBucketIfNotExists([]byte(bucket))
 			var buff = new(bytes.Buffer)
 			encoder := gob.NewEncoder(buff)
+			temp = &Admin{
+				Name:     "admin",
+				Email:    "admin@admin.com",
+				Password: "admin@filmwork.com",
+			}
 			encoder.Encode(temp)
 			adminBucket.Put([]byte(key), buff.Bytes())
 			return nil
