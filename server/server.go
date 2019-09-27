@@ -20,7 +20,7 @@ func routers() *mux.Router {
 	router := mux.NewRouter()
 	//all the rest api below would be gone through the session check
 	//functions should be here before use to get session checked
-	router.Use(h.CheckSession)
+	// router.Use(h.CheckSession)
 
 	//these dont require the session check
 	router.HandleFunc("/signin", h.SignIn)
