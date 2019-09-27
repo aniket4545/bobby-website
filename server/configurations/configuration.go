@@ -12,11 +12,7 @@ const (
 	//HTMLFILEPATH is the path for css files
 	HTMLFILEPATH string = "client/src/templates"
 	//PATH is for DB path
-<<<<<<< HEAD
 	PATH string = "server/user"
-=======
-	PATH string = "server/user/"
 	//ASSETPATH will have all image asset path
 	ASSETPATH string = "client/src/assets"
->>>>>>> master
 )
