@@ -35,10 +35,12 @@ func load() *admin {
 	if db, _ := bbolt.Open(path, 0660, nil); db != nil {
 		db.View(func(tx *bbolt.Tx) error {
 			adminBucket := tx.Bucket([]byte(bucket))
-			user := adminBucket.Get([]byte(key))
-			dec := gob.NewDecoder(bytes.NewReader(user))
-			err := dec.Decode(&adminUser)
-			return err
+			if user := adminBucket.Get([]byte(key)); user != nil {
+				dec := gob.NewDecoder(bytes.NewReader(user))
+				err := dec.Decode(&adminUser)
+				return err
+			}
+			return nil
 		})
 	}
 	return adminUser
