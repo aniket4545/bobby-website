@@ -14,5 +14,5 @@ const (
 	//PATH is for DB path
 	PATH string = "server/user"
 	//ASSETPATH will have all image asset path
-	ASSETPATH string = "client/src/assets"
+	ASSETPATH string = "client/src/assets/images"
 )
