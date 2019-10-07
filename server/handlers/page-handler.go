@@ -48,12 +48,10 @@ func SignOut(wr http.ResponseWriter, req *http.Request) {
 //if so it will call for new access token to backend
 func CheckSession(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(wr http.ResponseWriter, req *http.Request) {
-		if req.Method == http.MethodPost {
-			//check access token which would be fetched from authorization header
-			wr.Write([]byte(*fact.RefreshToken()))
-			handler.ServeHTTP(wr, req)
-			//will show us invalid token message
-			wr.WriteHeader(401)
-		}
+		//check access token which would be fetched from authorization header
+		wr.Write([]byte(*fact.RefreshToken()))
+		handler.ServeHTTP(wr, req)
+		//will show us invalid token message
+		wr.WriteHeader(401)
 	})
 }
