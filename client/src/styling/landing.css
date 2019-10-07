@@ -213,7 +213,7 @@ a.navbar-brand>img {
 	width: 100%;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: inherit;
+	background-size: cover;
 	display: flex;
 	align-items: center;
 }

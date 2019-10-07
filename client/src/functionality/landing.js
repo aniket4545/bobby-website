@@ -33,3 +33,25 @@ window.addEventListener('mouseup', (event) => {
     mobileHeaderElement.style.display = 'none';
   }
 });
+
+setHeight = () => {
+  const offsetWidth = document.querySelector('.js-image').offsetWidth;
+  const halfOffsetWidth = offsetWidth / 4;
+  const secondHalfOffsetWidth = offsetWidth / 8;
+  const thirdHalfOffsetWidth = offsetWidth / 16;
+
+  let tempValue = Number;
+  if (offsetWidth > 500) {
+    tempValue = halfOffsetWidth + secondHalfOffsetWidth + thirdHalfOffsetWidth;
+  } else {
+    tempValue = halfOffsetWidth + (offsetWidth / 2);
+  }
+  const finalHeightToImage = Math.floor(tempValue);
+
+
+
+  document.querySelector('.js-image').style.height = `${finalHeightToImage}px`;
+}
+
+this.setHeight();
+window.addEventListener('resize', this.setHeight);
