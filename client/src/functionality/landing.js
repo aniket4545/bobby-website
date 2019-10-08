@@ -7,9 +7,9 @@ function showing() {
   for (let i = 0; i < panel.length; i++) {
     panel[i].classList.toggle('showing');
   }
-  setTimeout(function () {
-    showing();
-  }, 3000);
+  // setTimeout(function () {
+  //   showing();
+  // }, 3000);
 }
 
 showing();
@@ -41,15 +41,8 @@ setHeight = () => {
   const thirdHalfOffsetWidth = offsetWidth / 16;
 
   let tempValue = Number;
-  if (offsetWidth > 500) {
-    tempValue = halfOffsetWidth + secondHalfOffsetWidth + thirdHalfOffsetWidth;
-  } else {
-    tempValue = halfOffsetWidth + (offsetWidth / 2);
-  }
+  tempValue = halfOffsetWidth + secondHalfOffsetWidth + thirdHalfOffsetWidth;
   const finalHeightToImage = Math.floor(tempValue);
-
-
-
   document.querySelector('.js-image').style.height = `${finalHeightToImage}px`;
 }
 
