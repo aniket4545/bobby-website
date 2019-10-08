@@ -17,37 +17,64 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand" href="#">
-            <img
-              src="https://lh3.googleusercontent.com/-ZAS0BBE8Sm0/WaFOdATxW9I/AAAAAAAAAf4/8FfuKoWw6n0cvynAv7Fv2sdYESliQEm4wCL0BGAYYCw/h18/2017-08-26.png"
-              alt="L A N T E R N">
+            <img src="/film-machine.png" alt="L A N T E R N">
           </a>
-          <ul class="navbar-nav header-links">
+          <ul class="navbar-nav header-links web-header">
             <li class="nav-item header-link--item">
               <a href="#home" class="nav-link header-link--item-label">
                 <span>HOME</span>
-                <i class="fa fa-home cursor-pointer" title="Home" aria-hidden="true"></i>
               </a>
             </li>
             <li class="nav-item header-link--item">
               <a href="#about" class="nav-link header-link--item-label">
                 <span>ABOUT</span>
-                <i class="fa fa-info-circle cursor-pointer" title="About" aria-hidden="true"></i>
               </a>
             </li>
             <li class="nav-item header-link--item">
               <a href="#work" class="nav-link header-link--item-label">
                 <span>WORK</span>
-                <i class="fa fa-briefcase cursor-pointer" title="Work" aria-hidden="true"></i>
               </a>
             </li>
             <li class="header-link--item">
               <a href="#contact" class="nav-link header-link--item-label">
                 <span>CONTACT</span>
-                <i class="fa fa-envelope-o cursor-pointer" title="Contact" aria-hidden="true"></i>
               </a>
             </li>
           </ul>
-          <i class="fa fa-bars cursor-pointer js-login-page" title="Login" aria-hidden="true"></i>
+          <ul class="navbar-nav header-links header-login">
+            <li class="header-link--item js-login-page">
+              <a href="#login" class="nav-link header-link--item-label">
+                <span>LOG IN</span>
+              </a>
+            </li>
+          </ul>
+          <div class="mobile-header">
+            <i class="fa fa-bars menu-bar-icon js-menu-icon" title="Menu" aria-hidden="true"></i>
+            <div class="mobile-actions js-mobile-actions">
+              <ul class="navbar-nav header-links">
+                <li class="nav-item header-link--item">
+                  <a href="#home" class="nav-link header-link--item-label">
+                    <span>HOME</span>
+                  </a>
+                </li>
+                <li class="nav-item header-link--item">
+                  <a href="#about" class="nav-link header-link--item-label">
+                    <span>ABOUT</span>
+                  </a>
+                </li>
+                <li class="nav-item header-link--item">
+                  <a href="#work" class="nav-link header-link--item-label">
+                    <span>WORK</span>
+                  </a>
+                </li>
+                <li class="header-link--item">
+                  <a href="#contact" class="nav-link header-link--item-label">
+                    <span>CONTACT</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </nav>
     </header>
@@ -80,7 +107,7 @@
     </div>
 
     <div class="just-info-section" id="about">
-      <div class="just-info-image" style="background-image: url('https://assets.mubi.com/splash/dog_tooth.jpg')">
+      <div class="just-info-image js-image" style="background-image: url('https://assets.mubi.com/splash/dog_tooth.jpg')">
         <h2 class="just-info__heading">
           Cult, classic, independent and award-winning films from around the world
         </h2>
@@ -179,7 +206,9 @@
       </form>
     </div>
 
-    <footer>@Copyright 2019</footer>
+    <footer>
+      <span class="developed-by"> Designed and Developed By Aniket Mane & Shweta Takale </span>
+    </footer>
   </section>
   <script type="text/javascript" src="landing.js"></script>
 </body>
