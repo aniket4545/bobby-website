@@ -11,9 +11,9 @@ import (
 
 //Start will start the server
 func Start() {
-	fmt.Println("Server is listening on ", config.PORT)
+	fmt.Println("Server is listening on ", config.IP+config.PORT)
 	http.Handle("/", routers())
-	http.ListenAndServe(config.PORT, nil)
+	http.ListenAndServe(config.IP+config.PORT, nil)
 }
 
 func routers() *mux.Router {
