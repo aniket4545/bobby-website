@@ -2,7 +2,7 @@ package configurations
 
 const (
 	//IP is the server ip
-	IP string = "13.233.122.239"
+	IP string = "127.0.0.1"
 	//PORT is the server port
 	PORT string = ":10000"
 	//CSSFILEPATH is the path for css files
