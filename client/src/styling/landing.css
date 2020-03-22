@@ -124,7 +124,7 @@ a.navbar-brand>img {
 	width: 100%;
 }
 
-.splash-main-bg-a, .splash-main-bg-b {
+.splash-main-bg-a, .splash-main-bg-b, .splash-main-bg-c {
 	overflow: hidden;
 	position: absolute;
 	top: 0;
@@ -140,12 +140,12 @@ a.navbar-brand>img {
 	opacity: 0;
 }
 
-.showing.splash-main-bg-a, .showing.splash-main-bg-b {
+.showing.splash-main-bg-a, .showing.splash-main-bg-b, .showing.splash-main-bg-c {
 	opacity: 1;
 }
 
 .splash-main-bg-a {
-	background-image: url('https://assets.mubi.com/splash/volver.jpg');
+	background-image: url('https://mechanics-images.s3.ap-south-1.amazonaws.com/2684b32d-8628-4884-a38c-894ba5109e98.JPG');
 }
 
 .splash-main-content {
