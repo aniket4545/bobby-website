@@ -15,7 +15,7 @@ func HandleFile(wr http.ResponseWriter, req *http.Request) {
 	var contentType, filePath = getContentType(req.URL.String())
 	file, err := os.Open(filePath)
 	if err != nil {
-		fmt.Printf("Error while opening file %s", req.URL.String())
+		fmt.Printf("Error while opening file %s\n", filePath)
 		return
 	}
 	defer file.Close()
