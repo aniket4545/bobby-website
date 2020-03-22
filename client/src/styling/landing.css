@@ -1,5 +1,12 @@
 /* common css */
 
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	box-sizing: border-box;
+}
+
 html {
 	scroll-behavior: smooth;
 	-webkit-user-select: none;
@@ -257,11 +264,6 @@ a.navbar-brand>img {
 }
 
 .now-showing-upper {
-	display: flex;
-	align-items: center;
-}
-
-.now-showing-upper {
 	color: #005A50;
 	display: block;
 	position: relative;
@@ -271,7 +273,7 @@ a.navbar-brand>img {
 .splash-left {
 	text-align: center;
 	box-sizing: border-box;
-	width: 370px;
+	width: calc(100% - 85px);
 	float: left;
 	margin-right: 10px;
 }
@@ -285,7 +287,7 @@ a.navbar-brand>img {
 	box-sizing: border-box;
 	position: relative;
 	font-size: 16px;
-	width: 370px;
+	width: calc(100% - 10px);
 	float: left;
 	margin-right: 10px;
 	text-align: center;
@@ -305,7 +307,7 @@ a.navbar-brand>img {
 
 .film-tile {
 	width: 370px;
-	float: left;
+	display: inline-block;
 	margin-right: 10px;
 	margin-bottom: 10px;
 	position: relative;
@@ -433,11 +435,7 @@ a.navbar-brand>img {
 		width: 700px;
 	}
 	.now-showing-upper {
-		display: flex;
 		padding: 90px 0;
-	}
-	.splash-left {
-		width: 340px;
 	}
 	.now-showing-upper__heading {
 		padding: 40px 0;
@@ -472,9 +470,6 @@ a.navbar-brand>img {
 	.splash-main .tagline {
 		font-size: 95px;
 	}
-	.splash-left {
-		width: 560px;
-	}
 	.now-showing-upper__heading {
 		padding: 0;
 		margin-left: 85px;
@@ -484,6 +479,7 @@ a.navbar-brand>img {
 	.splash-right {
 		margin-left: 85px;
 		margin-right: 85px;
+		width: calc(100% - 170px);
 	}
 }
 
@@ -587,9 +583,6 @@ a.navbar-brand>img {
 }
 
 @media (min-width: 768px) {
-	.film-tile:nth-child(2n) {
-		margin-right: 0;
-	}
 	.modal-content {
 		width: 40%;
 	}
