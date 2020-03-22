@@ -288,7 +288,7 @@ a.navbar-brand>img {
 	float: left;
 	margin-right: 10px;
 	text-align: center;
-	color: #666;
+	color:#fffbee;
 }
 
 .splash-film-grid {
@@ -321,10 +321,6 @@ a.navbar-brand>img {
 	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.375) 0%, transparent 50%);
 }
 
-.film-tile:nth-child(3n) {
-	margin-right: 0;
-}
-
 .film-thumb {
 	height: 250px;
 	width: 100%;
@@ -332,12 +328,6 @@ a.navbar-brand>img {
 }
 
 .film-tile-inner {
-	/* position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%; 
-	z-index: 1; */
 	color: #fff;
 	background-color: transparent;
 	transition: background-color 175ms ease-in-out;
