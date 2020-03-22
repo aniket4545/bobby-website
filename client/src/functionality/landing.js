@@ -2,14 +2,24 @@ function hasClass(element, cls) {
   return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
 
+let slidesIndex = 0;
+
 function showing() {
   const panel = document.querySelectorAll('.splash-panel');
-  for (let i = 0; i < panel.length; i++) {
-    panel[i].classList.toggle('showing');
+  for (let i = 0; i < slidesIndex; i++) {
+    panel[i].classList.remove('showing'); 
   }
-  // setTimeout(function () {
-  //   showing();
-  // }, 3000);
+
+  if(slidesIndex >= panel.length){
+    slidesIndex = 0;
+  }
+
+  panel[slidesIndex].classList.add('showing');
+  slidesIndex++;
+  
+  setTimeout(function () {
+    showing();
+  }, 5000);
 }
 
 showing();
