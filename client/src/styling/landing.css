@@ -160,7 +160,7 @@ a.navbar-brand>img {
 	overflow: hidden;
 	position: relative;
 	display: block;
-	padding-top: 125px;
+	padding-top: 14rem;
 }
 
 .splash-main {
@@ -199,9 +199,6 @@ a.navbar-brand>img {
 }
 
 @media (min-width: 768px) {
-	.splash-main .tagline {
-		font-size: 48px;
-	}
 	.web-information {
 		font-size: 16px;
 	}
@@ -297,7 +294,7 @@ a.navbar-brand>img {
 .splash-film-grid {
 	display: inline-block;
 	width: 100%;
-	margin-top: 90px;
+	margin-top: 24px;
 }
 
 .film-grid {
@@ -411,6 +408,7 @@ a.navbar-brand>img {
 @media (min-width: 768px) {
 	.splash-main .tagline {
 		width: 440px;
+		font-size: 2.5rem;
 	}
 	.web-information {
 		font-size: 16px;
@@ -426,9 +424,6 @@ a.navbar-brand>img {
 	.device-support__heading {
 		display: block;
 	}
-	.splash-main .tagline {
-		font-size: 110px;
-	}
 	.just-info__heading {
 		margin-top: 0;
 		font-size: 50px;
@@ -440,7 +435,6 @@ a.navbar-brand>img {
 	.now-showing-upper__heading {
 		padding: 40px 0;
 		font-size: 46px;
-		margin-bottom: 0;
 	}
 	.splash-right {
 		font-size: 28px;
@@ -468,7 +462,7 @@ a.navbar-brand>img {
 		font-size: 42px;
 	}
 	.splash-main .tagline {
-		font-size: 95px;
+		font-size: 5rem;
 	}
 	.now-showing-upper__heading {
 		padding: 0;
