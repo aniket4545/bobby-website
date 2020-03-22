@@ -426,8 +426,8 @@ a.navbar-brand>img {
 	}
 	.just-info__heading {
 		margin-top: 0;
-		font-size: 50px;
-		width: 700px;
+        font-size: 30px;
+    	width: 725px;
 	}
 	.now-showing-upper {
 		padding: 90px 0;
