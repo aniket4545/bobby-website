@@ -7,9 +7,9 @@ function showing() {
   for (let i = 0; i < panel.length; i++) {
     panel[i].classList.toggle('showing');
   }
-  // setTimeout(function () {
-  //   showing();
-  // }, 3000);
+  setTimeout(function () {
+    showing();
+  }, 3000);
 }
 
 showing();
