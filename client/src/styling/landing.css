@@ -457,6 +457,7 @@ a.navbar-brand>img {
 		flex-direction: column;
 		align-items: flex-end;
 		width: 400px;
+		padding-top: 12px;
 	}
 	.web-information__text {
 		margin: 0 0 40px 0;
@@ -469,7 +470,7 @@ a.navbar-brand>img {
 		font-size: 42px;
 	}
 	.splash-main .tagline {
-		font-size: 110px;
+		font-size: 95px;
 	}
 	.splash-left {
 		width: 560px;
@@ -511,7 +512,7 @@ a.navbar-brand>img {
 
 @media (min-width: 1148px) {
 	.grid {
-		width: 1130px;
+		width: 1300px;
 	}
 }
 
